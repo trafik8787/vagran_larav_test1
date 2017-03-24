@@ -22,3 +22,22 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(App\Menu::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => $faker->name
+    ];
+});
+
+$factory->define(App\Article::class, function (Faker\Generator $faker) {
+
+    return [
+        'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
+        'description' => $faker->text($maxNbChars = 150),
+        'image' => $faker->image('/home/vagrant/Code/Site1/www/public/upload/image', $width = 640, $height = 480, '', false)
+    ];
+
+
+});

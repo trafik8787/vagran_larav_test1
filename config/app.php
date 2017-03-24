@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://homestead.app'),
 
     /*
     |--------------------------------------------------------------------------
@@ -181,6 +181,10 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Laracasts\Generators\GeneratorsServiceProvider::class,
+        App\Providers\ViewComposerServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
 
     ],
 
@@ -230,6 +234,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        'ImagesNew' => Intervention\Image\Facades\Image::class,
 
     ],
 

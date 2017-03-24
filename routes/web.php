@@ -11,6 +11,14 @@
 |
 */
 
+Route::resource('articles', 'ArticleController');
+Auth::routes();
 Route::get('/', function () {
-    return view('welcome');
+    return 'sdfsdf';
 });
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
