@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Events\SomeEvent;
 use App\Http\Requests\ArticleRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Event;
 use phpDocumentor\Reflection\File;
 
 class ArticleController extends Controller
 {
 
+    public $dataTest;
     /**
      * ArticleController constructor.
      */
@@ -25,7 +28,11 @@ class ArticleController extends Controller
     public function index()
     {
         $data = array();
-        $data['articles'] = Article::all();
+        $articles = Article::paginate(5);
+        //$articles->make();
+        //$articles = $articles->make(4, 100);
+
+        $data['articles'] = $articles;
 
         return view('pages.article', $data);
     }
@@ -71,16 +78,24 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      */
     public function show($id)
     {
         $data['item_article'] = \App\Article::findOrFail($id);
-       //dd($id);
-        return view('pages.article', $data);
+        $this->dataTest = $data;
+        //test собитий
+    //    event(new SomeEvent($this));
+
+        return view('pages.article', $this->dataTest);
     }
 
+//    public function upDataTest () {
+//        //dd($this->dataTest['item_article']->title);
+//        $this->dataTest['item_article']->title = 'asdaasdasdad';
+//    }
     /**
      * Show the form for editing the specified resource.
      *

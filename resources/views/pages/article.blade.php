@@ -23,6 +23,7 @@
                     </li>
                 @endforeach
             </ul>
+                {{$articles->render()}}
             @endif
             {{--{{dd($item_article)}}--}}
             @if (!empty($item_article))
@@ -34,6 +35,7 @@
 
             @endif
 
+            {{--@include('vendor.pagination.default', ['paginator' => $articles, 'elements' => $articles])--}}
         </div>
     </div>
 @endsection
